@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="main-content">
+    <form action="" method="get">
+    <div class="form-group">
+        <label>Filter By Class</label>
+        <select name="q" onchange="this.form.submit()">
+            <option value="" >Select</option>
+            <option value="" {% if q == 'All' %}selected{% endif %}>All</option>
+            {% for class in classes %}
+            <option value="{{class}}">{{class}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    </form>
+    <br>
+    <h2>{% if q != '' %}{{q}}{% else %}All{% endif %} Records ({{info.count}})</h2>
+    <table cellpadding="7px">
+        <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Class</th>
+        <th>Phone</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+            {% for data in info  %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.address}}</td>
+                <td>{{data.userclass}}</td>
+                <td>{{data.phone}}</td>
+                <td>
+                    <a href="{% url 'edit' data.id %}">Edit</a>
+                    <a href="{% url 'delete' data.id %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <h2>No data found</h2>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
