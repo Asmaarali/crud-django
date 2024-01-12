@@ -5,26 +5,37 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crudapp', '0001_initial'),
+        ("crudapp", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='userclass',
+            name="userclass",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('student_class', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("student_class", models.CharField(max_length=50)),
             ],
         ),
         migrations.RemoveField(
-            model_name='userinfo',
-            name='email',
+            model_name="userinfo",
+            name="email",
         ),
         migrations.AddField(
-            model_name='userinfo',
-            name='userclass',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='crudapp.userclass'),
+            model_name="userinfo",
+            name="userclass",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="crudapp.userclass",
+            ),
         ),
     ]

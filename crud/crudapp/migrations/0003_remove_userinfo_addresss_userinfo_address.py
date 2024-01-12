@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('crudapp', '0002_userclass_remove_userinfo_email_userinfo_userclass'),
+        ("crudapp", "0002_userclass_remove_userinfo_email_userinfo_userclass"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='userinfo',
-            name='addresss',
+            model_name="userinfo",
+            name="addresss",
         ),
         migrations.AddField(
-            model_name='userinfo',
-            name='address',
+            model_name="userinfo",
+            name="address",
             field=models.CharField(max_length=100, null=True),
         ),
     ]
